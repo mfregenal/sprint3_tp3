@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Superhéroes</title>
+    <script type="module" src="/js/scripts.mjs"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- Navegación -->
+    <nav class="bg-blue-600 text-white p-4 flex justify-center items-center space-x-40">
+        <h1 class="text-3xl font-bold">Superhéroes</h1>
+        <a href="/api/heroes/formulario" class="text-white hover:text-green-500 hover:underline">Agregar Superhéroe</a>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="flex flex-col items-center justify-center py-8">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Lista de Superhéroes</h1>
+
+        <!-- Iterar sobre los héroes -->
+        <% heroes.forEach((hero, index) => { %>
+        <div class="w-full max-w-md bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold text-blue-600">Superhéroe N° <%= index + 1 %></h2>
+            <p class="text-gray-800"><strong>Nombre:</strong> <%= hero.Nombre %></p>
+            <p class="text-gray-800"><strong>Nombre Real:</strong> <%= hero['Nombre Real'] %></p>
+            <p class="text-gray-800"><strong>Edad:</strong> <%= hero.Edad %></p>
+            <p class="text-gray-800"><strong>Planeta de Origen:</strong> <%= hero['Planeta de Origen'] %></p>
+            <p class="text-gray-800"><strong>Debilidad:</strong> <%= hero.Debilidad %></p>
+
+            <p class="mt-4 text-gray-800"><strong>Poderes:</strong></p>
+            <ul class="list-disc list-inside text-gray-600">
+                <% hero.Poderes.forEach(poder => { %>
+                <li><%= poder %></li>
+                <% }); %>
+            </ul>
+
+            <p class="mt-4 text-gray-800"><strong>Aliados:</strong></p>
+            <ul class="list-disc list-inside text-gray-600">
+                <% hero.Aliados.forEach(aliado => { %>
+                <li><%= aliado %></li>
+                <% }); %>
+            </ul>
+
+            <p class="mt-4 text-gray-800"><strong>Enemigos:</strong></p>
+            <ul class="list-disc list-inside text-gray-600">
+                <% hero.Enemigos.forEach(enemigo => { %>
+                <li><%= enemigo %></li>
+                <% }); %>
+            </ul>
+
+            <!-- Botones para editar y eliminar -->
+            <div class="mt-6 flex justify-between">
+                <a href="/api/heroes/formulario/<%= hero.id %>" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">
+                    Editar
+                </a>
+                <button onclick="confirmarEliminacion(event, '<%= hero.id %>')" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-700">
+                    Eliminar
+                </button>
+            </div>
+        </div>
+        <% }); %>
+    </main>
+</body>
+</html>

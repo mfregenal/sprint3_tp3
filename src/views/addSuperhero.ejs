@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar Superhéroe</title>
+    <script type="module" src="/js/scripts.mjs"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- Navegación -->
+    <nav class="bg-blue-600 text-white p-4 flex justify-center items-center">
+        <a href="/api/heroes" class="text-3xl font-bold text-center">Superhéroes</a>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="flex flex-col items-center justify-center py-8">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Cargar un Superhéroe</h1>
+
+        <!-- Formulario -->
+        <form id="superheroe-form" onsubmit="enviarFormulario(event)" class="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg">
+            <div class="mb-4">
+                <label for="nombreSuperheroe" class="block text-gray-700 font-semibold mb-2">Nombre Superhéroe:</label>
+                <input type="text" id="nombreSuperheroe" name="nombreSuperheroe" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-500" required minlength="3" maxlength="60">
+            </div>
+
+            <div class="mb-4">
+                <label for="nombreReal" class="block text-gray-700 font-semibold mb-2">Nombre Real:</label>
+                <input type="text" id="nombreReal" name="nombreReal" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-500" required minlength="3" maxlength="60">
+            </div>
+
+            <div class="mb-4">
+                <label for="edad" class="block text-gray-700 font-semibold mb-2">Edad:</label>
+                <input type="number" id="edad" name="edad" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-500" required min="0">
+            </div>
+
+            <div class="mb-4">
+                <label for="planetaOrigen" class="block text-gray-700 font-semibold mb-2">Planeta de Origen:</label>
+                <input type="text" id="planetaOrigen" name="planetaOrigen" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="debilidad" class="block text-gray-700 font-semibold mb-2">Debilidad:</label>
+                <input type="text" id="debilidad" name="debilidad" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-500">
+            </div>
+
+            <div class="mb-4">
+                <label for="poderes" class="block text-gray-700 font-semibold mb-2">Poderes:</label>
+                <div id="poderes-container">
+                    <input type="text" name="poderes[]" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-500 mb-2" placeholder="Poder principal" required minlength="3" maxlength="60">
+                </div>
+                <button type="button" onclick="agregarPoder()" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Agregar otro poder</button>
+            </div>
+
+            <div class="mb-4">
+                <label for="aliados" class="block text-gray-700 font-semibold mb-2">Aliados:</label>
+                <div id="aliados-container">
+                    <input type="text" name="aliados[]" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-500 mb-2" placeholder="Aliado Principal" required>
+                </div>
+                <button type="button" onclick="agregarAliado()" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Agregar otro aliado</button>
+            </div>
+
+            <div class="mb-4">
+                <label for="enemigos" class="block text-gray-700 font-semibold mb-2">Enemigos:</label>
+                <div id="enemigos-container">
+                    <input type="text" name="enemigos[]" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-500 mb-2" placeholder="Enemigo Principal" required>
+                </div>
+                <button type="button" onclick="agregarEnemigo()" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">Agregar otro enemigo</button>
+            </div>
+
+            <div class="mb-4">
+                <label for="creador" class="block text-gray-700 font-semibold mb-2">Creador:</label>
+                <input type="text" id="creador" name="creador" class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring focus:ring-blue-500" required>
+            </div>
+
+            <button type="submit" class="w-full bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-700">Cargar Superhéroe</button>
+        </form>
+    </main>
+</body>
+</html>
