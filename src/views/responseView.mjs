@@ -1,4 +1,4 @@
-export function renderizarSuperheroe(superheroe) {
+export function renderizarSuperheroe( superheroe ) {
     return {
         id: superheroe.id,
         Nombre: superheroe.nombreSuperHeroe,
@@ -12,6 +12,6 @@ export function renderizarSuperheroe(superheroe) {
     };
 }
 
-export function renderizarListaSuperheroes(superheroes) {
-    return superheroes.map(renderizarSuperheroe);
+export function renderizarListaSuperheroes( superheroes ) {
+    return superheroes.map( renderizarSuperheroe );
 }

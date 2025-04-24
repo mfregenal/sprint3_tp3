@@ -24,7 +24,7 @@ connectDB();
 app.use('/api', superHeroRoutes);
 
 // Manejo de errores para rutas no encontradas
-app.use((res) => {
+app.use((req, res) => {
     res.status(404).send({ mensaje: "Ruta no encontrada" });
 });
 
